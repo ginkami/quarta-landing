@@ -64,6 +64,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ru"
+      data-theme="quarta"
       className={cn("h-full", "antialiased", headingFont.variable, bodyFont.variable, captionFont.variable, priceFont.variable, nbrbFont.variable, "font-sans")}
     >
       <body className="min-h-full flex flex-col">

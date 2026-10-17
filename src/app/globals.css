@@ -1,29 +1,51 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
-/*
- ---break---
- */
-@custom-variant dark (&:is(.dark *));
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "quarta";
+  default: true;
+  color-scheme: light;
+
+  /* Brand palette — project-approved (landing-content/design-system specs) */
+  --color-base-100: #faf6ee;
+  --color-base-200: #e8dccb;
+  --color-base-300: #d5c2ad;
+  --color-base-content: #2c2623;
+  --color-primary: #4a5d4e;
+  --color-primary-content: #faf6ee;
+  --color-secondary: #d08a4b;
+  --color-secondary-content: #2c2623;
+  /* Derived, harmonious with the cream/sage/orange family */
+  --color-accent: #56331e; /* coffee brown — from the hero photo palette */
+  --color-accent-content: #faf6ee;
+  --color-neutral: #2c2623;
+  --color-neutral-content: #faf6ee;
+  --color-info: #5b7b8a;
+  --color-info-content: #faf6ee;
+  --color-success: #55703f;
+  --color-success-content: #faf6ee;
+  --color-warning: #c4922f;
+  --color-warning-content: #2c2623;
+  --color-error: #b3452e;
+  --color-error-content: #faf6ee;
+
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
 
 /*
- * Design tokens — project-approved palette and typography roles.
- * Font family CSS variables (--font-yk, --font-pt-serif, --font-pt-sans,
- * --font-pt-mono) are declared on <html> by next/font/local in layout.tsx.
+ * Typography roles — font families are wired in layout.tsx through
+ * next/font/local and exposed as CSS variables on <html>.
  */
 @theme static {
-  /* Palette */
-  --color-background: #faf6ee;
-  --color-foreground: #2c2623;
-  --color-block: #d5c2ad;
-  --color-promo: #d08a4b;
-  --color-line: #e8dccb;
-
-  /* Typography roles */
   --font-heading: var(--font-yk);
   --font-body: var(--font-pt-serif);
   --font-caption: var(--font-pt-sans);
   --font-price: var(--font-pt-mono);
+  --font-sans: var(--font-pt-sans);
 }
 
 @layer base {
@@ -31,7 +53,6 @@
     background-color: #faf6ee;
     color: #2c2623;
     font-family: var(--font-pt-serif), "Times New Roman", serif;
-    @apply bg-background text-foreground;
   }
 
   h1,
@@ -48,149 +69,9 @@
     outline: 2px solid #4a5d4e;
     outline-offset: 2px;
   }
-  * {
-    @apply border-border outline-ring/50;
-  }
-  html {
-    @apply font-sans;
-  }
-}
-/*
- ---break---
- */
-@theme inline {
-  --font-sans: var(--font-pt-sans);
-  --font-serif: var(--font-pt-serif);
-  --font-mono: var(--font-pt-mono);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
-}
-/*
- ---break---
- */
-:root {
-  --background: #faf6ee;
-  --foreground: #2c2623;
-  --card: #faf6ee;
-  --card-foreground: #2c2623;
-  --popover: #faf6ee;
-  --popover-foreground: #2c2623;
-  --primary: #4a5d4e;
-  --primary-foreground: #faf6ee;
-  --secondary: #d5c2ad;
-  --secondary-foreground: #2c2623;
-  --muted: #e8dccb;
-  --muted-foreground: #6b5f55;
-  --accent: #e8dccb;
-  --accent-foreground: #2c2623;
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: #e8dccb;
-  --input: #e8dccb;
-  --ring: #4a5d4e;
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
-/*
- ---break---
- */
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
-}
 
-/*
- * Belarusian ruble glyph via the official NBRB icon font
- * (https://www.nbrb.by/coinsbanknotes/byn-ico/nbrb-font): the "BYN"
- * ligature inside .nbrb-icon renders the ruble symbol; without the font
- * the element falls back to plain text "BYN". Follows the NBRB snippet,
- * minus the obsolete `speak` declaration, duplicate -moz overrides and
- * `!important` (nothing else targets this class).
- */
-.nbrb-icon {
-  font-family: var(--font-nbrb), sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  letter-spacing: normal;
-  font-feature-settings: "liga";
-  font-variant-ligatures: discretionary-ligatures;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Stylistic preference kept from the previous revision */
+  *::placeholder {
+    opacity: 0.7;
+  }
 }

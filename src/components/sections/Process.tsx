@@ -11,10 +11,13 @@ export function Process() {
 
         <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {processSteps.map((step, index) => (
-            <li key={step} className="rounded-2xl border border-line bg-background p-5">
+            <li
+              key={step}
+              className="rounded-2xl border border-base-300 bg-base-300 p-5"
+            >
               <span
                 aria-hidden="true"
-                className="flex size-10 items-center justify-center rounded-full bg-primary font-heading text-xl text-primary-foreground"
+                className="flex size-10 items-center justify-center rounded-full bg-primary font-heading text-xl text-primary-content"
               >
                 {index + 1}
               </span>

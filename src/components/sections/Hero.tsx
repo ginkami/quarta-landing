@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { hero, sections } from "@/content/landing";
 
 export function Hero() {
@@ -22,32 +21,31 @@ export function Hero() {
       />
 
       <div className="relative mx-auto w-full max-w-6xl px-4 py-20">
-        <p className="font-caption text-sm uppercase tracking-[0.35em] text-[#d5c2ad]">
+        <p className="font-caption text-sm uppercase tracking-[0.35em] text-base-300">
           Минск · с 2019 года
         </p>
-        <p className="font-heading mt-6 text-6xl leading-none text-[#faf6ee] md:text-8xl">
+        <p className="font-heading mt-6 text-6xl leading-none text-base-100 md:text-8xl">
           КВАРТА
         </p>
         <h1
           id="hero-title"
-          className="font-heading mt-4 text-3xl text-[#faf6ee] md:text-5xl"
+          className="font-heading mt-4 text-3xl text-base-100 md:text-5xl"
         >
           {hero.title}
         </h1>
-        <p className="mt-5 max-w-2xl font-body text-lg text-[#faf6ee]/90 md:text-xl">
+        <p className="mt-5 max-w-2xl font-body text-lg text-base-100/90 md:text-xl">
           {hero.lead}
         </p>
-        <p className="mt-6 inline-block rounded-full bg-primary px-4 py-2 font-caption text-sm text-primary-foreground">
+        <p className="badge badge-pill badge-primary mt-6 font-caption text-sm font-normal">
           {hero.freshness}
         </p>
         <div className="mt-8">
-          <Button
-            render={<a href={`#${sections.request}`} />}
-            nativeButton={false}
-            className="h-12 border border-[#faf6ee]/40 px-8 text-base"
+          <a
+            href={`#${sections.request}`}
+            className="btn btn-primary btn-lg border border-base-100/40"
           >
             {hero.cta}
-          </Button>
+          </a>
         </div>
       </div>
     </section>

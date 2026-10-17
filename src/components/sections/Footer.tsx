@@ -2,31 +2,36 @@ import { brand, contacts } from "@/content/landing";
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-background py-10">
-      <div className="mx-auto flex max-w-6xl flex-col gap-5 px-4 md:flex-row md:items-center md:justify-between">
+    <footer className="border-t border-base-300 bg-base-100">
+      <div className="footer mx-auto grid-cols-1 gap-5 px-4 py-10 md:grid-cols-3">
         <div>
           <p className="font-heading text-2xl leading-none">{brand.name}</p>
-          <p className="mt-1 font-caption text-sm text-muted-foreground">{brand.tagline}</p>
+          <p className="mt-1 font-caption text-sm text-base-content/70">
+            {brand.tagline}
+          </p>
         </div>
 
-        <div className="font-caption text-sm text-muted-foreground">
+        <div className="font-caption text-sm text-base-content/70 md:text-center">
           <p>{contacts.address}</p>
-          <p className="mt-1 flex gap-3">
-            <a href={`tel:${contacts.phoneHref}`} className="transition-colors hover:text-primary">
+          <p className="mt-1 flex gap-3 md:justify-center">
+            <a
+              href={`tel:${contacts.phoneHref}`}
+              className="link-hover link text-base-content"
+            >
               {contacts.phone}
             </a>
             <a
               href={contacts.instagramUrl}
               target="_blank"
               rel="noreferrer"
-              className="transition-colors hover:text-primary"
+              className="link-hover link text-base-content"
             >
               {contacts.instagramLabel}
             </a>
           </p>
         </div>
 
-        <p className="font-caption text-sm text-muted-foreground">
+        <p className="font-caption text-sm text-base-content/70 md:text-end">
           © {brand.name}, 2019–2026
         </p>
       </div>

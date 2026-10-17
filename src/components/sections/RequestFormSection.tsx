@@ -12,10 +12,10 @@ export function RequestFormSection() {
           <h2 className="font-heading mt-3 text-4xl md:text-5xl">
             {requestForm.title}
           </h2>
-          <p className="mt-3 font-body text-muted-foreground">{requestForm.lead}</p>
+          <p className="mt-3 font-body text-base-content/70">{requestForm.lead}</p>
         </div>
 
-        <div className="rounded-2xl border border-line bg-background p-6 md:col-span-2 md:p-8">
+        <div className="rounded-2xl border border-base-300 bg-base-300/30 p-6 md:col-span-2 md:p-8">
           <RequestForm />
         </div>
       </div>

@@ -30,11 +30,11 @@ export function Contacts() {
         <h2 className="font-heading mt-3 text-4xl md:text-5xl">Контакты</h2>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2">
-          <article className="rounded-2xl border border-line bg-background p-6">
+          <article className="card border border-base-300 bg-base-100 p-6">
             <MapPinIcon aria-hidden="true" className="size-8 text-primary" />
             <h3 className="font-heading mt-4 text-2xl">Мастерская</h3>
             <p className="mt-3 font-body text-lg">{contacts.address}</p>
-            <dl className="mt-4 space-y-1 font-caption text-sm text-muted-foreground">
+            <dl className="mt-4 space-y-1 font-caption text-sm text-base-content/70">
               {contacts.hours.map((row) => (
                 <div key={row.days} className="flex justify-between gap-4">
                   <dt>{row.days}</dt>
@@ -44,11 +44,11 @@ export function Contacts() {
             </dl>
           </article>
 
-          <article className="rounded-2xl border border-line bg-background p-6">
+          <article className="card border border-base-300 bg-base-100 p-6">
             <h3 className="font-heading text-2xl">Связаться</h3>
             <a
               href={`tel:${contacts.phoneHref}`}
-              className="mt-4 flex items-center gap-3 font-price text-2xl font-semibold text-primary hover:underline"
+              className="link-hover link mt-4 flex items-center gap-3 font-price text-2xl font-semibold text-primary"
             >
               <PhoneIcon aria-hidden="true" className="size-6 shrink-0" />
               {contacts.phone}
@@ -57,12 +57,12 @@ export function Contacts() {
               href={contacts.instagramUrl}
               target="_blank"
               rel="noreferrer"
-              className="mt-4 flex items-center gap-3 font-body text-lg text-foreground transition-colors hover:text-primary"
+              className="link-hover link mt-4 flex items-center gap-3 font-body text-lg text-base-content"
             >
               <InstagramGlyph />
               {contacts.instagramLabel}
             </a>
-            <p className="mt-6 font-caption text-sm text-muted-foreground">
+            <p className="mt-6 font-caption text-sm text-base-content/70">
               Позвоните или напишите — менеджер перезвонит и оформит заказ.
             </p>
           </article>
