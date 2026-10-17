@@ -6,6 +6,7 @@ import { Footer } from "@/components/sections/Footer";
 import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
 import { Process } from "@/components/sections/Process";
+import { RequestFormSection } from "@/components/sections/RequestFormSection";
 import { Subscription } from "@/components/sections/Subscription";
 import { buildBusinessJsonLd } from "@/lib/json-ld";
 
@@ -26,6 +27,7 @@ export default function Home() {
         <Delivery />
         <Process />
         <Faq />
+        <RequestFormSection />
         <Contacts />
       </main>
       <Footer />

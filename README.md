@@ -22,6 +22,7 @@ npm run start      # serve the production build
 npm run lint       # ESLint
 npm run typecheck  # tsc --noEmit
 npm test           # Vitest unit tests
+npm run db:migrate # apply database migrations (requires DATABASE_URL)
 ```
 
 ## Project rules

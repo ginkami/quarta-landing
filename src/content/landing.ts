@@ -142,12 +142,23 @@ export const faq: readonly FaqItem[] = [
   },
 ] as const;
 
+export const requestForm = {
+  kicker: "Заявка",
+  title: "Оставить заявку",
+  lead: "Заполните форму — менеджер перезвонит, уточнит детали и подтвердит заказ. На сайте никакой оплаты.",
+  submitLabel: "Отправить заявку",
+  successTitle: "Заявка принята!",
+  successMessage: "Менеджер перезвонит и подтвердит заказ.",
+  errorTitle: "Не получилось отправить заявку",
+} as const;
+
 export const sections = {
   assortment: "assortment",
   subscription: "subscription",
   delivery: "delivery",
   process: "process",
   faq: "faq",
+  request: "request",
   contacts: "contacts",
 } as const;
 
@@ -157,6 +168,7 @@ export const navItems: readonly NavItem[] = [
   { id: sections.delivery, label: "Доставка" },
   { id: sections.process, label: "Как работаем" },
   { id: sections.faq, label: "Вопросы" },
+  { id: sections.request, label: "Заявка" },
   { id: sections.contacts, label: "Контакты" },
 ] as const;
 

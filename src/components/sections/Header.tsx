@@ -5,7 +5,7 @@ import { MenuIcon, XIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { hero, navItems, sections } from "@/content/landing";
 
-const requestEntry = `#${sections.contacts}`;
+const requestEntry = `#${sections.request}`;
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -22,7 +22,7 @@ export function Header() {
           КВАРТА
         </a>
 
-        <nav aria-label="Разделы" className="hidden items-center gap-5 md:flex">
+        <nav aria-label="Разделы" className="hidden items-center gap-5 lg:flex">
           {navItems.map((item) => (
             <a
               key={item.id}
@@ -44,7 +44,7 @@ export function Header() {
           <Button
             variant="outline"
             size="icon"
-            className="md:hidden"
+            className="lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Закрыть меню" : "Открыть меню"}
@@ -59,7 +59,7 @@ export function Header() {
         <nav
           id="mobile-nav"
           aria-label="Разделы (мобильное меню)"
-          className="border-t border-line bg-background md:hidden"
+          className="border-t border-line bg-background lg:hidden"
         >
           <div className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-3">
             {navItems.map((item) => (

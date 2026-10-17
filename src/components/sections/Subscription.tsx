@@ -33,7 +33,7 @@ export function Subscription() {
           </p>
 
           <Button
-            render={<a href={`#${sections.contacts}`} />}
+            render={<a href={`#${sections.request}`} />}
             className="mt-6 h-12 px-6 text-base"
           >
             Оформить подписку

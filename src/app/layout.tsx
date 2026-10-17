@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import localFont from "next/font/local";
+import { AttributionTracker } from "@/components/tracking/AttributionTracker";
 import { site } from "@/content/landing";
 import "./globals.css";
 import { Geist } from "next/font/google";
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         {children}
+        <AttributionTracker />
         <Analytics />
       </body>
     </html>
