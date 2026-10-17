@@ -43,6 +43,7 @@ export function Hero() {
         <div className="mt-8">
           <Button
             render={<a href={`#${sections.request}`} />}
+            nativeButton={false}
             className="h-12 border border-[#faf6ee]/40 px-8 text-base"
           >
             {hero.cta}

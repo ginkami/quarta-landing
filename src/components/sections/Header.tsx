@@ -37,6 +37,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <Button
             render={<a href={requestEntry} />}
+            nativeButton={false}
             className="hidden h-10 px-4 sm:inline-flex"
           >
             {hero.cta}

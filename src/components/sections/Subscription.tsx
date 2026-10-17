@@ -35,6 +35,7 @@ export function Subscription() {
 
           <Button
             render={<a href={`#${sections.request}`} />}
+            nativeButton={false}
             className="mt-6 h-12 px-6 text-base"
           >
             Оформить подписку
