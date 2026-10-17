@@ -15,29 +15,19 @@ export function Faq() {
           </p>
         </div>
 
-        <div
-          role="radiogroup"
-          aria-label="Частые вопросы"
-          className="join join-vertical w-full md:col-span-2"
-        >
-          {faq.map((item, index) => (
-            <div
+        <div className="flex flex-col gap-3 md:col-span-2">
+          {faq.map((item) => (
+            <details
               key={item.question}
-              className="collapse collapse-arrow join-item border border-base-300 bg-base-100"
+              className="collapse collapse-arrow border border-base-300 bg-base-100"
             >
-              <input
-                type="radio"
-                name="faq-collapse"
-                aria-label={item.question}
-                defaultChecked={index === 0}
-              />
-              <div className="collapse-title font-heading text-lg md:text-2xl">
+              <summary className="collapse-title font-heading text-lg md:text-2xl">
                 {item.question}
-              </div>
+              </summary>
               <div className="collapse-content">
                 <p className="font-body text-base">{renderBynText(item.answer)}</p>
               </div>
-            </div>
+            </details>
           ))}
         </div>
       </div>

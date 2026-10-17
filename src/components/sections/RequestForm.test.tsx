@@ -16,7 +16,7 @@ const submitLeadMock = vi.mocked(submitLead);
 const trackMock = vi.mocked(track);
 
 function fillNameAndInterest(name: string, interest: string) {
-  fireEvent.change(screen.getByLabelText("Имя"), { target: { value: name } });
+  fireEvent.change(screen.getByLabelText(/^Имя/), { target: { value: name } });
   fireEvent.click(screen.getByRole("radio", { name: interest }));
 }
 
@@ -30,7 +30,7 @@ describe("RequestForm", () => {
     render(<RequestForm />);
 
     fillNameAndInterest("Мария", "Подписка");
-    fireEvent.change(screen.getByLabelText("Телефон"), { target: { value: "12345" } });
+    fireEvent.change(screen.getByLabelText(/^Телефон/), { target: { value: "12345" } });
     fireEvent.click(screen.getByRole("button", { name: "Отправить заявку" }));
 
     expect(
@@ -44,7 +44,7 @@ describe("RequestForm", () => {
     render(<RequestForm />);
 
     fillNameAndInterest("Мария", "Разовый заказ");
-    fireEvent.change(screen.getByLabelText("Телефон"), {
+    fireEvent.change(screen.getByLabelText(/^Телефон/), {
       target: { value: "+375291234567" },
     });
     fireEvent.click(screen.getByRole("button", { name: "Отправить заявку" }));

@@ -6,7 +6,7 @@ Defines the content, structure and interactive behavior of the single-page marke
 ## Requirements
 
 ### Requirement: Section composition
-The landing SHALL render, in order: header, hero, assortment, subscription, delivery & pickup, process steps, FAQ, request form, contacts, footer. The header SHALL provide in-page navigation to the main sections — including the request form — and a primary CTA that leads to the request form section.
+The landing SHALL render, in order: header, hero, assortment, subscription, delivery & pickup, process steps, FAQ, request form, footer. The header SHALL provide in-page navigation to the main sections — including the request form — and a primary CTA that leads to the request form section.
 
 #### Scenario: First visit
 - **WHEN** a visitor opens the landing page
@@ -17,11 +17,11 @@ The landing SHALL render, in order: header, hero, assortment, subscription, deli
 - **THEN** the page scrolls to the corresponding section without a full page reload
 
 ### Requirement: Hero section
-The hero SHALL use `public/images/hero.webp` as its full-section background and communicate the core value proposition: the «КВАРТА» logo rendered as text, roasting in 5 kg batches since 2019 by former baristas, roasting on Thursdays, and beans reaching the customer 1–3 day after roast, plus a primary CTA that leads to the request form section.
+The hero SHALL use `public/images/hero.webp` as its full-section background and communicate the core value proposition with an H1 title and a lead narrative: the roastery is run by former baristas, they roast in small batches on Thursdays, Friday is the delivery day, and beans arrive while still fresh, plus a primary CTA that leads to the request form section.
 
 #### Scenario: Value proposition
 - **WHEN** the hero renders
-- **THEN** it visibly states who the roastery is and why freshness matters (roast days, 1–3 day freshness) with a CTA leading to the request form section
+- **THEN** it visibly states who the roastery is and why freshness matters (small Thursday roasts, next-day Friday delivery) with a CTA leading to the request form section
 
 ### Requirement: Assortment carousel
 The assortment section SHALL present product cards as a navigable carousel. Each card SHALL contain an image with 2:3 proportions, a title, a short description and a price, for exactly these products: Эфиопия Иргачеффе — 32 BYN; Колумбия Уила — 29 BYN; Бразилия Серрадо — 26 BYN; Дрип-пакеты, ассорти — 18 BYN.
@@ -63,11 +63,11 @@ The FAQ section SHALL render an accordion: each question expands or collapses it
 - **THEN** the corresponding answer becomes visible and the control reflects its expanded state
 
 ### Requirement: Contact information
-The contacts section SHALL display the pickup address (Минск, ул. Короля, 9), the working hours, and clickable contact channels (phone link and Instagram link) with the footer repeating essential identity/contact information.
+The footer SHALL display the contact information as a single vertical list with icon markers: the phone as a `tel:` link, the email as a `mailto:` link, the pickup address (Минск, ул. Короля, 9), and the working hours. The social media profiles SHALL be exposed as icon-only links on one line without a marker. On large screens the footer SHALL also show the header navigation as a vertical menu (hidden on mobile) alongside the brand identity with a copyright line.
 
-#### Scenario: Finding contacts
-- **WHEN** a visitor opens the contacts section
-- **THEN** the address, hours and contact channels are visible, and activating the phone or Instagram link opens the corresponding handler
+#### Scenario: Finding contacts in the footer
+- **WHEN** a visitor scrolls to the footer
+- **THEN** phone, email, address and hours are listed with icon markers, the social profiles are icon-only links on one line, and the navigation menu column is visible on large screens but hidden on mobile
 
 ### Requirement: Mobile-first responsiveness
 The landing SHALL be usable from a 320 px wide viewport upward with no horizontal scrolling; primary CTA tap targets SHALL be at least 44 px, and the header navigation SHALL remain reachable in a compact mobile form.

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { CheckIcon } from "lucide-react";
 import { renderBynText } from "@/components/ui/BynIcon";
 import { sections, subscription } from "@/content/landing";
@@ -40,16 +41,27 @@ export function Subscription() {
           </a>
         </div>
 
-        <div className="rounded-3xl bg-base-300/60 p-8 md:p-10">
-          <p className="font-heading text-6xl leading-none text-base-content md:text-7xl">
-            2 × 250 г
-          </p>
-          <p className="mt-4 font-caption text-lg text-base-content/80">
-            пачки каждый месяц с бесплатной доставкой
-          </p>
-          <p className="mt-8 font-price text-3xl font-semibold text-primary">
-            {renderBynText(subscription.priceLabel)}
-          </p>
+        <div className="flex items-center justify-center gap-3 rounded-3xl bg-base-300/60 p-6 md:gap-4 md:p-10">
+          <Image
+            src="/images/doypack-empty.webp"
+            alt=""
+            width={400}
+            height={600}
+            className="h-auto w-full min-w-0 max-w-[160px] object-contain sm:max-w-[220px]"
+          />
+          <span
+            aria-hidden="true"
+            className="font-heading shrink-0 text-5xl leading-none text-primary sm:text-6xl md:text-7xl"
+          >
+            +
+          </span>
+          <Image
+            src="/images/doypack-empty.webp"
+            alt=""
+            width={400}
+            height={600}
+            className="h-auto w-full min-w-0 max-w-[160px] object-contain sm:max-w-[220px]"
+          />
         </div>
       </div>
     </section>

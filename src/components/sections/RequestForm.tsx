@@ -73,7 +73,9 @@ export function RequestForm() {
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
       <div>
         <label htmlFor="lead-name" className="label px-0 py-0">
-          <span className="label-text font-medium">Имя</span>
+          <span className="label-text text-sm font-medium">
+            Имя <span aria-hidden="true" className="text-error">*</span>
+          </span>
         </label>
         <input
           id="lead-name"
@@ -94,7 +96,9 @@ export function RequestForm() {
 
       <div>
         <label htmlFor="lead-phone" className="label px-0 py-0">
-          <span className="label-text font-medium">Телефон</span>
+          <span className="label-text text-sm font-medium">
+            Телефон <span aria-hidden="true" className="text-error">*</span>
+          </span>
         </label>
         <Controller
           control={control}
@@ -129,13 +133,13 @@ export function RequestForm() {
         name="interest"
         render={({ field, fieldState }) => (
           <fieldset className="fieldset px-0">
-            <legend className="fieldset-legend font-medium">
-              Что вас интересует?
-              <span aria-hidden="true" className="ml-1 text-error">
-                *
+            <legend className="fieldset-legend px-0 py-0 mb-1">
+              <span className="label-text text-sm font-medium label">
+                Что вас интересует?{" "}
+                <span aria-hidden="true" className="text-error">*</span>
               </span>
             </legend>
-            <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-6">
+            <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-6 text-sm">
               {INTEREST_OPTIONS.map((option) => (
                 <label
                   key={option.value}
@@ -165,7 +169,7 @@ export function RequestForm() {
 
       <div>
         <label htmlFor="lead-comment" className="label px-0 py-0">
-          <span className="label-text font-medium">Комментарий</span>
+          <span className="label-text text-sm font-medium">Комментарий</span>
         </label>
         <Controller
           control={control}

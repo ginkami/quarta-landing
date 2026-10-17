@@ -3,41 +3,46 @@ import { describe, expect, it } from "vitest";
 import { Faq } from "./Faq";
 
 describe("FAQ accordion", () => {
-  it("keeps the group single-open and reveals answers through radio state", () => {
+  it("starts fully collapsed and each question toggles independently", () => {
     render(<Faq />);
 
-    const firstRadio = screen.getByRole("radio", { name: /Насколько свежий кофе/i });
-    const secondRadio = screen.getByRole("radio", { name: /Как работает доставка\?/i });
+    const items = document.querySelectorAll<HTMLDetailsElement>("details");
+    expect(items).toHaveLength(5);
+    for (const item of items) {
+      expect(item.open).toBe(false);
+    }
 
-    // The first question is open by default; answers live in the DOM and are
-    // shown/hidden by CSS based on the checked radio.
-    expect(firstRadio).toBeChecked();
-    expect(
-      screen.getByText(/обжариваем партиями по 5 кг по четвергам/i),
-    ).toBeInTheDocument();
+    const first = items[0];
+    const second = items[1];
+    if (!first || !second) {
+      throw new Error("expected FAQ items");
+    }
+    const firstSummary = first.querySelector("summary");
+    const secondSummary = second.querySelector("summary");
+    if (!firstSummary || !secondSummary) {
+      throw new Error("expected summaries");
+    }
 
-    fireEvent.click(secondRadio);
+    fireEvent.click(firstSummary);
+    expect(first.open).toBe(true);
 
-    expect(secondRadio).toBeChecked();
-    expect(firstRadio).not.toBeChecked();
-    // The answer text is split around BYN icons — match the trailing fragment.
-    expect(
-      screen.getByText(/Заказ можно забрать самовывозом с ул\. Короля, 9\./),
-    ).toBeInTheDocument();
+    // Independent disclosure: opening another question keeps the first open.
+    fireEvent.click(secondSummary);
+    expect(second.open).toBe(true);
+    expect(first.open).toBe(true);
+
+    // Fully collapsible: the same question closes again.
+    fireEvent.click(firstSummary);
+    expect(first.open).toBe(false);
+    expect(second.open).toBe(true);
   });
 
-  it("renders a radio control labelled with each question", () => {
+  it("renders questions as summaries and keeps answers with BYN icons inside", () => {
     render(<Faq />);
 
-    const labels = [
-      "Насколько свежий кофе?",
-      "Как работает доставка?",
-      "Что входит в подписку?",
-      "Как оплатить заказ?",
-      "Когда можно забрать заказ самовывозом?",
-    ];
-    for (const label of labels) {
-      expect(screen.getByRole("radio", { name: label })).toBeInTheDocument();
-    }
+    expect(screen.getByText("Насколько свежий кофе?").closest("summary")).not.toBeNull();
+    expect(screen.getByText("Как работает доставка?").closest("summary")).not.toBeNull();
+    // Three BYN occurrences live inside the FAQ answers.
+    expect(document.querySelectorAll("details .nbrb-icon")).toHaveLength(3);
   });
 });

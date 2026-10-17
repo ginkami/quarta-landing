@@ -36,9 +36,6 @@ export function Hero() {
         <p className="mt-5 max-w-2xl font-body text-lg text-base-100/90 md:text-xl">
           {hero.lead}
         </p>
-        <p className="badge badge-pill badge-primary mt-6 font-caption text-sm font-normal">
-          {hero.freshness}
-        </p>
         <div className="mt-8">
           <a
             href={`#${sections.request}`}

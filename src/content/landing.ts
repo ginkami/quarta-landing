@@ -40,8 +40,7 @@ export const site = {
 
 export const hero = {
   title: "Свежая обжарка кофе в Минске",
-  lead: "Обжариваем партиями по 5 кг с 2019 года. Раньше работали бариста — теперь обжариваем так, как пьём сами.",
-  freshness: "Обжарка по четвергам, доставка в пятницу — зерно у вас на 1–3 день после обжарки",
+  lead: "Мы — Аня и Дмитрий, и у нас небольшая кофейная ростерия. Проработав годами бариста мы точно знаем: главный секрет идеальной чашки — это свежесть зерна. Поэтому мы не копим кофе на складе, а обжариваем понемногу, только по четвергам. Пятница — день доставки по Минску, в остальные дни зерно можно забрать самим. В итоге к вам на кухню зерно приезжает ровно тогда, когда в нём ещё вся жизнь.",
   cta: "Оставить заявку",
 } as const;
 
@@ -107,12 +106,11 @@ export const contacts = {
     { days: "пн–пт", time: "8:00–20:00" },
     { days: "сб–вс", time: "10:00–18:00" },
   ],
-  // TODO(client-copy): replace with the real phone number before launch.
-  phone: "+375 00 000 00 00",
-  phoneHref: "+375000000000",
-  // TODO(client-copy): replace with the real Instagram profile URL before launch.
-  instagramUrl: "https://www.instagram.com/",
-  instagramLabel: "Instagram",
+  phone: "+375 (29) 876-54-32",
+  phoneHref: "+375298765432",
+  email: "info@quarta-roast.by",
+  instagramUrl: "https://instagram.com/quarta-roast",
+  telegramUrl: "https://t.me/quarta-roast",
 } as const;
 
 // Draft copy pending client approval (design.md → Open Questions).
@@ -159,8 +157,10 @@ export const sections = {
   process: "process",
   faq: "faq",
   request: "request",
-  contacts: "contacts",
 } as const;
+
+/** Anchor of the contacts list inside the footer (no dedicated section). */
+export const footerContactsId = "footer-contacts";
 
 export const navItems: readonly NavItem[] = [
   { id: sections.assortment, label: "Ассортимент" },
@@ -169,7 +169,7 @@ export const navItems: readonly NavItem[] = [
   { id: sections.process, label: "Как работаем" },
   { id: sections.faq, label: "Вопросы" },
   { id: sections.request, label: "Заявка" },
-  { id: sections.contacts, label: "Контакты" },
+  { id: footerContactsId, label: "Контакты" },
 ] as const;
 
 export const business = {

@@ -1,5 +1,4 @@
 import { Assortment } from "@/components/sections/Assortment";
-import { Contacts } from "@/components/sections/Contacts";
 import { Delivery } from "@/components/sections/Delivery";
 import { Faq } from "@/components/sections/Faq";
 import { Footer } from "@/components/sections/Footer";
@@ -28,7 +27,6 @@ export default function Home() {
         <Process />
         <Faq />
         <RequestFormSection />
-        <Contacts />
       </main>
       <Footer />
     </>

@@ -13,9 +13,10 @@ export function Header() {
   return (
     <header
       id="top"
-      className="navbar sticky top-0 z-50 border-b border-base-300 bg-base-100/90 px-4 backdrop-blur"
+      className="sticky top-0 z-50 border-b border-base-300 bg-base-100/90 backdrop-blur"
     >
-      <div className="navbar-start">
+      <div className="navbar mx-auto w-full max-w-6xl px-4">
+        <div className="navbar-start">
         <a
           href="#top"
           onClick={close}
@@ -51,6 +52,7 @@ export function Header() {
         >
           {open ? <XIcon /> : <MenuIcon />}
         </button>
+      </div>
       </div>
 
       {open ? (
