@@ -37,6 +37,13 @@ const priceFont = localFont({
   display: "swap",
 });
 
+const nbrbFont = localFont({
+  src: "../fonts/nbrb.woff2",
+  variable: "--font-nbrb",
+  weight: "400",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: site.title,
@@ -60,7 +67,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ru"
-      className={cn("h-full", "antialiased", headingFont.variable, bodyFont.variable, captionFont.variable, priceFont.variable, "font-sans", geist.variable)}
+      className={cn("h-full", "antialiased", headingFont.variable, bodyFont.variable, captionFont.variable, priceFont.variable, nbrbFont.variable, "font-sans", geist.variable)}
     >
       <body className="min-h-full flex flex-col">
         {children}

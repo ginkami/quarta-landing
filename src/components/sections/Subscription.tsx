@@ -1,5 +1,6 @@
 import { CheckIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { renderBynText } from "@/components/ui/BynIcon";
 import { sections, subscription } from "@/content/landing";
 
 export function Subscription() {
@@ -29,7 +30,7 @@ export function Subscription() {
           </ul>
 
           <p className="mt-6 font-price text-4xl font-semibold text-primary">
-            {subscription.priceLabel}
+            {renderBynText(subscription.priceLabel)}
           </p>
 
           <Button
@@ -48,7 +49,7 @@ export function Subscription() {
             пачки каждый месяц с бесплатной доставкой
           </p>
           <p className="mt-8 font-price text-3xl font-semibold text-primary">
-            {subscription.priceLabel}
+            {renderBynText(subscription.priceLabel)}
           </p>
         </div>
       </div>

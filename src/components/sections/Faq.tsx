@@ -1,5 +1,6 @@
 "use client";
 
+import { renderBynText } from "@/components/ui/BynIcon";
 import {
   Accordion,
   AccordionContent,
@@ -29,7 +30,7 @@ export function Faq() {
                 {item.question}
               </AccordionTrigger>
               <AccordionContent className="font-body text-base md:text-lg">
-                {item.answer}
+                {renderBynText(item.answer)}
               </AccordionContent>
             </AccordionItem>
           ))}

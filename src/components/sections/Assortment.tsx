@@ -8,6 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { BynIcon } from "@/components/ui/BynIcon";
 import { assortment, sections } from "@/content/landing";
 
 export function Assortment() {
@@ -41,7 +42,7 @@ export function Assortment() {
                   <div className="mt-4 flex items-start justify-between gap-3">
                     <h3 className="font-heading text-2xl">{product.title}</h3>
                     <p className="font-price whitespace-nowrap text-xl font-semibold text-primary">
-                      {product.price} BYN
+                      {product.price} <BynIcon />
                     </p>
                   </div>
                   <p className="mt-1 font-caption text-sm text-muted-foreground">

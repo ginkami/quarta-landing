@@ -1,4 +1,5 @@
 import { MapPinIcon, TruckIcon } from "lucide-react";
+import { renderBynText } from "@/components/ui/BynIcon";
 import { contacts, delivery, sections } from "@/content/landing";
 
 export function Delivery() {
@@ -18,10 +19,10 @@ export function Delivery() {
               <li>{delivery.day}</li>
               <li>
                 <span className="font-price text-lg font-semibold text-primary">
-                  {delivery.priceLabel}
+                  {renderBynText(delivery.priceLabel)}
                 </span>
               </li>
-              <li className="text-muted-foreground">{delivery.freeFromLabel}</li>
+              <li className="text-muted-foreground">{renderBynText(delivery.freeFromLabel)}</li>
             </ul>
           </article>
 

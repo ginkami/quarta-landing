@@ -172,3 +172,25 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
+
+/*
+ * Belarusian ruble glyph via the official NBRB icon font
+ * (https://www.nbrb.by/coinsbanknotes/byn-ico/nbrb-font): the "BYN"
+ * ligature inside .nbrb-icon renders the ruble symbol; without the font
+ * the element falls back to plain text "BYN". Follows the NBRB snippet,
+ * minus the obsolete `speak` declaration, duplicate -moz overrides and
+ * `!important` (nothing else targets this class).
+ */
+.nbrb-icon {
+  font-family: var(--font-nbrb), sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  letter-spacing: normal;
+  font-feature-settings: "liga";
+  font-variant-ligatures: discretionary-ligatures;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
