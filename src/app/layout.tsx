@@ -4,10 +4,7 @@ import localFont from "next/font/local";
 import { AttributionTracker } from "@/components/tracking/AttributionTracker";
 import { site } from "@/content/landing";
 import "./globals.css";
-import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
-
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const headingFont = localFont({
   src: "../fonts/YanoneKaffeesatz-Bold.woff2",
@@ -67,7 +64,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ru"
-      className={cn("h-full", "antialiased", headingFont.variable, bodyFont.variable, captionFont.variable, priceFont.variable, nbrbFont.variable, "font-sans", geist.variable)}
+      className={cn("h-full", "antialiased", headingFont.variable, bodyFont.variable, captionFont.variable, priceFont.variable, nbrbFont.variable, "font-sans")}
     >
       <body className="min-h-full flex flex-col">
         {children}
