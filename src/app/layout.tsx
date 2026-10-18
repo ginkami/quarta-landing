@@ -27,13 +27,6 @@ const captionFont = localFont({
   display: "swap",
 });
 
-const priceFont = localFont({
-  src: "../fonts/PTMono-Regular.woff2",
-  variable: "--font-pt-mono",
-  weight: "400",
-  display: "swap",
-});
-
 const nbrbFont = localFont({
   src: "../fonts/nbrb.woff2",
   variable: "--font-nbrb",
@@ -65,7 +58,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="ru"
       data-theme="quarta"
-      className={cn("h-full", "antialiased", headingFont.variable, bodyFont.variable, captionFont.variable, priceFont.variable, nbrbFont.variable, "font-sans")}
+      className={cn("h-full", "antialiased", headingFont.variable, bodyFont.variable, captionFont.variable, nbrbFont.variable, "font-sans")}
     >
       <body className="min-h-full flex flex-col">
         {children}
