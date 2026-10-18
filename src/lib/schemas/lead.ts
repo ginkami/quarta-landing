@@ -13,7 +13,7 @@ export const INTEREST_OPTIONS: ReadonlyArray<{ value: Interest; label: string }>
 const PHONE_FORMAT_MESSAGE =
   "Номер должен начинаться с +375 и содержать 12 цифр: +375 (29) 123-45-67";
 
-const PHONE_PATTERN = /^\+375(17|25|29|33|44)\d{7}$/;
+const PHONE_PATTERN = /^\+375\d{9}$/;
 
 /**
  * Strips presentation characters (spaces, parentheses, dashes) so the
@@ -29,34 +29,21 @@ export function isValidPhone(value: string): boolean {
 }
 
 /**
- * Progressive display mask for the phone field: keeps the input anchored to
- * `+375 (XX) XXX-XX-XX` while allowing partial values during typing.
- * Validation still decides acceptance; the mask never rejects keystrokes.
+ * Formats a complete valid number for display (`+375 (XX) XXX-XX-XX`) on blur.
+ * Partial or invalid input passes through untouched — keystrokes never rewrite
+ * the value, so the caret never jumps. Validation still decides acceptance;
+ * this is presentation only.
  */
 export function formatPhoneInput(raw: string): string {
-  const keepPlus = raw.trimStart().startsWith("+");
-  const digits = raw.replace(/\D/g, "");
-  const matchedCountry = digits.startsWith("375");
-  const national = (matchedCountry ? digits.slice(3) : digits).slice(0, 9);
-
-  if (national === "") {
-    return keepPlus ? "+" : "";
+  const match = /^\+375(\d{2})(\d{3})(\d{2})(\d{2})$/.exec(normalizePhone(raw));
+  if (!match) {
+    return raw;
   }
-
-  let formatted = `+375 (${national.slice(0, 2)}`;
-  if (national.length >= 2) {
-    formatted += ")";
+  const [, area, subscriber, localFirst, localLast] = match;
+  if (!area || !subscriber || !localFirst || !localLast) {
+    return raw;
   }
-  if (national.length > 2) {
-    formatted += ` ${national.slice(2, 5)}`;
-  }
-  if (national.length > 5) {
-    formatted += `-${national.slice(5, 7)}`;
-  }
-  if (national.length > 7) {
-    formatted += `-${national.slice(7, 9)}`;
-  }
-  return formatted;
+  return `+375 (${area}) ${subscriber}-${localFirst}-${localLast}`;
 }
 
 export const leadSchema = z.object({

@@ -20,7 +20,7 @@ Validation SHALL run through the shared zod schema before any request is sent: n
 - **THEN** a Russian error message appears under the phone field and no network request is made
 
 ### Requirement: Phone acceptance rules
-The system SHALL accept only Belarusian numbers: `+375` (an `8…` domestic prefix is not accepted) followed by an operator code of 17, 25, 29, 33, or 44 and seven digits, allowing spaces, parentheses, and dashes between digits. Stored phones SHALL be normalized to `+375XXXXXXXXX`.
+The system SHALL accept only Belarusian numbers: `+375` followed by exactly nine digits of any value, allowing spaces, parentheses, and dashes between digits. Stored phones SHALL be normalized to `+375XXXXXXXXX`.
 
 #### Scenario: Formatted input is normalized
 - **WHEN** a visitor submits `+375 (29) 123-45-67`
@@ -29,6 +29,10 @@ The system SHALL accept only Belarusian numbers: `+375` (an `8…` domestic pref
 #### Scenario: Foreign or malformed numbers rejected
 - **WHEN** a visitor enters `80291234567`, `+7 999 123 45 67`, or `+375 12 345`
 - **THEN** validation fails with a Russian hint and no lead is created
+
+#### Scenario: Any nine-digit subscriber number accepted
+- **WHEN** a visitor submits `+375165120497`
+- **THEN** validation passes and the lead stores `+375165120497`
 
 ### Requirement: Server-side validation
 The Server Action SHALL re-validate every payload with the same shared schema. A payload that fails server validation SHALL be rejected without writing any row, regardless of what the client allowed through.

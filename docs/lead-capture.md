@@ -18,7 +18,7 @@ the server copy is the security boundary.
 
 ## Phone acceptance
 
-- Allowed operator codes: `17`, `25`, `29`, `33`, `44` — exactly `+375` + 2 + 7 digits.
+- Criterion: `+375` + exactly nine digits of any value (any subscriber number).
 - Spaces, parentheses and dashes are accepted on input and stripped on save.
 - Rejected: domestic `8…` numbers, `+7…` numbers, wrong lengths.
 - Error hints are Russian and rendered under the field.

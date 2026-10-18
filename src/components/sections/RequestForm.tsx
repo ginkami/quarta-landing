@@ -113,8 +113,11 @@ export function RequestForm() {
                 placeholder="+375 (29) 123-45-67"
                 className={`input w-full font-body${fieldState.error ? " input-error" : ""}`}
                 value={field.value ?? ""}
-                onChange={(event) => field.onChange(formatPhoneInput(event.target.value))}
-                onBlur={field.onBlur}
+                onChange={(event) => field.onChange(event.target.value)}
+                onBlur={(event) => {
+                  field.onChange(formatPhoneInput(event.target.value));
+                  field.onBlur();
+                }}
                 aria-invalid={fieldState.error ? true : undefined}
                 aria-describedby={fieldState.error ? "lead-phone-error" : undefined}
               />

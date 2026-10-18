@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { leadSchema, normalizePhone } from "./lead";
+import { formatPhoneInput, leadSchema, normalizePhone } from "./lead";
 
 describe("phone acceptance rules", () => {
   it("normalizes a formatted Belarusian number to E.164", () => {
@@ -15,14 +15,10 @@ describe("phone acceptance rules", () => {
     }
   });
 
-  it("accepts every allowed operator code", () => {
-    for (const code of ["17", "25", "29", "33", "44"]) {
-      const result = leadSchema.safeParse({
-        name: "Тест",
-        phone: `+375 ${code} 123 45 67`,
-        interest: "question",
-      });
-      expect(result.success, `code ${code}`).toBe(true);
+  it("accepts any nine-digit subscriber number after +375", () => {
+    for (const phone of ["+375 17 123 45 67", "+375 (16) 512-04-97", "+375165120497", "+375291234567"]) {
+      const result = leadSchema.safeParse({ name: "Тест", phone, interest: "question" });
+      expect(result.success, phone).toBe(true);
     }
   });
 
@@ -101,5 +97,26 @@ describe("lead schema fields", () => {
       comment: "я".repeat(501),
     });
     expect(tooLong.success).toBe(false);
+  });
+});
+
+describe("formatPhoneInput (format on blur only)", () => {
+  it("formats a complete valid number for display", () => {
+    expect(formatPhoneInput("+375291234567")).toBe("+375 (29) 123-45-67");
+    expect(formatPhoneInput("+375 (16) 512-04-97")).toBe("+375 (16) 512-04-97");
+    expect(formatPhoneInput("+375 16 512 04 97")).toBe("+375 (16) 512-04-97");
+  });
+
+  it("leaves partial input untouched", () => {
+    expect(formatPhoneInput("")).toBe("");
+    expect(formatPhoneInput("+")).toBe("+");
+    expect(formatPhoneInput("+3")).toBe("+3");
+    expect(formatPhoneInput("+37529")).toBe("+37529");
+  });
+
+  it("leaves invalid input untouched", () => {
+    expect(formatPhoneInput("12345")).toBe("12345");
+    expect(formatPhoneInput("+79991234567")).toBe("+79991234567");
+    expect(formatPhoneInput("+37529123456")).toBe("+37529123456");
   });
 });

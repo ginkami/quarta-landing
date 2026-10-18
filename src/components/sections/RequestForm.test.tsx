@@ -67,4 +67,16 @@ describe("RequestForm", () => {
     expect(honeypot).not.toBeNull();
     expect(honeypot?.closest("div")?.className).toContain("hidden");
   });
+
+  it("passes raw digits through while typing and formats a valid number on blur", () => {
+    render(<RequestForm />);
+    const phone = screen.getByLabelText(/^Телефон/);
+
+    fireEvent.change(phone, { target: { value: "+3" } });
+    expect(phone).toHaveValue("+3");
+
+    fireEvent.change(phone, { target: { value: "+375291234567" } });
+    fireEvent.blur(phone);
+    expect(phone).toHaveValue("+375 (29) 123-45-67");
+  });
 });
