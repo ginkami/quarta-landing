@@ -12,7 +12,7 @@ if (!connectionString) {
   process.exit(1);
 }
 
-const MIGRATIONS = ["0001_create_leads.sql"] as const;
+const MIGRATIONS = ["0001_create_leads.sql", "0002_add_lead_status.sql"] as const;
 
 const pool = new Pool({ connectionString });
 
