@@ -10,6 +10,7 @@ import { isDuplicateWindow } from "@/lib/dedup";
 import { getPool } from "@/lib/db";
 import { ipRateLimiter } from "@/lib/rate-limit";
 import { leadSchema, type LeadFormValues } from "@/lib/schemas/lead";
+import { sendLeadNotification } from "@/lib/telegram";
 
 export interface LeadPayload extends LeadFormValues {
   /** Honeypot value — a filled honeypot is silently discarded. */
@@ -111,6 +112,15 @@ export async function submitLead(payload: LeadPayload): Promise<SubmitLeadResult
     );
     await client.query("COMMIT");
     inTransaction = false;
+    // Best-effort mirror: the row is already committed, and the helper never
+    // throws — a Telegram failure is logged inside and cannot change the
+    // visitor's outcome. Dedup/honeypot/rate-limit paths never reach here.
+    await sendLeadNotification({
+      name: input.name,
+      phone: input.phone,
+      interest: input.interest,
+      comment: input.comment ?? null,
+    });
     return { status: "ok", duplicate: false };
   } catch (error: unknown) {
     if (inTransaction) {

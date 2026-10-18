@@ -33,6 +33,9 @@ npm run db:migrate # apply database migrations (requires DATABASE_URL)
 - `ADMIN_PASSWORD` — password for the `/admin` lead panel (minimum 8 characters).
   It is validated lazily at runtime, so it must be set before the admin panel or
   the lead form serve traffic.
+- `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` — bot credentials for lead
+  notifications in the Telegram group. Optional: without them submissions still
+  succeed and the notification is skipped with a server-side warning.
 
 ## Deployment notes
 
@@ -42,6 +45,10 @@ npm run db:migrate   # applies db/migrations/*.sql, including 0002_add_lead_stat
 
 Run migrations against the target Neon branch **before** deploying a release that
 depends on them. Migrations are idempotent and safe to re-run.
+
+Set `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` in the Vercel environment to
+enable Telegram lead notifications; leaving them unset keeps the form fully
+functional with notifications disabled.
 
 ## Project rules
 
