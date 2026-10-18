@@ -1,10 +1,4 @@
-/**
- * Single source of truth for the landing content.
- *
- * TODO(client-copy) markers flag values that must be replaced with real
- * client data before launch (phone number, Instagram handle). FAQ answers are
- * drafts pending client approval (see change design.md → Open Questions).
- */
+/** Single source of truth for the landing content. */
 
 export interface Product {
   readonly id: string;
@@ -34,8 +28,7 @@ export const site = {
   title: "КВАРТА — свежая обжарка кофе в Минске",
   description:
     "Обжариваем кофе партиями по 5 кг с 2019 года. Зерно на 1–3 день после обжарки. Доставка по Минску в пятницу, самовывоз с ул. Короля, 9.",
-  // TODO(client-copy): confirm the production domain before launch.
-  url: "https://quarta-landing.vercel.app",
+  url: "https://quarta-roast.by",
 } as const;
 
 export const hero = {
@@ -113,7 +106,6 @@ export const contacts = {
   telegramUrl: "https://t.me/quarta-roast",
 } as const;
 
-// Draft copy pending client approval (design.md → Open Questions).
 export const faq: readonly FaqItem[] = [
   {
     question: "Насколько свежий кофе?",
