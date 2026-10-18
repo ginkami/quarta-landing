@@ -63,11 +63,11 @@ The FAQ section SHALL render an accordion: each question expands or collapses it
 - **THEN** the corresponding answer becomes visible and the control reflects its expanded state
 
 ### Requirement: Contact information
-The footer SHALL display the contact information as a single vertical list with icon markers: the phone as a `tel:` link, the email as a `mailto:` link, the pickup address (Минск, ул. Короля, 9), and the working hours. The social media profiles SHALL be exposed as icon-only links on one line without a marker. On large screens the footer SHALL also show the header navigation as a vertical menu (hidden on mobile) alongside the brand identity with a copyright line.
+The footer SHALL display the contact information as a single vertical list with icon markers: the phone as a `tel:` link, the email as a `mailto:` link, the pickup address (Минск, ул. Короля, 9), and the working hours. The social media profiles SHALL be exposed as icon-only links on one line without a marker. On large screens the footer SHALL also show a vertical menu of the main sections alongside the brand identity with a copyright line.
 
 #### Scenario: Finding contacts in the footer
 - **WHEN** a visitor scrolls to the footer
-- **THEN** phone, email, address and hours are listed with icon markers, the social profiles are icon-only links on one line, and the navigation menu column is visible on large screens but hidden on mobile
+- **THEN** phone, email, address and hours are listed with icon markers, the social profiles are icon-only links on one line, and the navigation menu (the header navigation without the contacts link) is visible on large screens but hidden on mobile
 
 ### Requirement: Mobile-first responsiveness
 The landing SHALL be usable from a 320 px wide viewport upward with no horizontal scrolling; primary CTA tap targets SHALL be at least 44 px, and the header navigation SHALL remain reachable in a compact mobile form.

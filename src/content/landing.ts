@@ -172,6 +172,11 @@ export const navItems: readonly NavItem[] = [
   { id: footerContactsId, label: "Контакты" },
 ] as const;
 
+/** Footer menu mirrors the header without the self-referential contacts link. */
+export const footerNavItems: readonly NavItem[] = navItems.filter(
+  (item) => item.id !== footerContactsId,
+);
+
 export const business = {
   name: "КВАРТА",
   street: "ул. Короля, 9",

@@ -1,5 +1,5 @@
 import { ClockIcon, MailIcon, MapPinIcon, PhoneIcon } from "lucide-react";
-import { brand, contacts, footerContactsId, navItems } from "@/content/landing";
+import { brand, contacts, footerContactsId, footerNavItems } from "@/content/landing";
 
 function InstagramGlyph() {
   return (
@@ -56,7 +56,7 @@ export function Footer() {
         {/* Duplicate of the header navigation — large screens only */}
         <nav aria-label="Навигация в подвале" className="hidden md:block">
           <ul className="flex flex-col gap-2">
-            {navItems.map((item) => (
+            {footerNavItems.map((item) => (
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
