@@ -17,19 +17,19 @@ export function Hero() {
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-br from-[#1d1b17]/90 via-[#1d1b17]/75 to-[#56331e]/60"
+        className="absolute inset-0 bg-gradient-to-br from-[#1d1b17]/10 via-[#1d1b17]/75 to-[#56331e]/20"
       />
 
       <div className="relative mx-auto w-full max-w-6xl px-4 py-20">
         <p className="font-caption text-sm uppercase tracking-[0.35em] text-base-300">
-          Минск · с 2019 года
+          С 2019 года
         </p>
         <p className="font-heading mt-6 text-6xl leading-none text-base-100 md:text-8xl">
           КВАРТА
         </p>
         <h1
           id="hero-title"
-          className="font-heading mt-4 text-3xl text-base-100 md:text-5xl"
+          className="font-heading mt-4 text-3xl text-base-100 md:text-4xl tracking-wider"
         >
           {hero.title}
         </h1>

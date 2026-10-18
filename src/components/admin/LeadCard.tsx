@@ -67,7 +67,7 @@ export function LeadCard({ lead, onChanged }: LeadCardProps) {
           <h2 className="font-heading mt-1 text-xl">{lead.name}</h2>
           <a
             href={`tel:${lead.phone.replace(/[^\d+]/g, "")}`}
-            className="link-hover link font-price text-sm"
+            className="link-hover link font-mono text-sm"
           >
             {lead.phone}
           </a>

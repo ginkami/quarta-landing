@@ -146,7 +146,7 @@ export function AssortmentCarousel() {
               </figure>
               <div className="mt-4 flex items-start justify-between gap-3">
                 <h3 className="font-heading text-2xl">{product.title}</h3>
-                <p className="font-price whitespace-nowrap text-xl font-semibold text-primary">
+                <p className="font-price whitespace-nowrap text-2xl text-[color-mix(in_oklch,var(--color-secondary)_70%,black)]">
                   {product.price} <BynIcon />
                 </p>
               </div>

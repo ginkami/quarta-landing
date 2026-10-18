@@ -44,7 +44,7 @@
   --font-heading: var(--font-yk);
   --font-body: var(--font-pt-serif);
   --font-caption: var(--font-pt-sans);
-  --font-price: var(--font-pt-mono);
+  --font-price: var(--font-pt-serif);
   --font-sans: var(--font-pt-sans);
 }
 

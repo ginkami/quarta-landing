@@ -111,7 +111,7 @@ export function RequestForm() {
                 inputMode="tel"
                 autoComplete="tel"
                 placeholder="+375 (29) 123-45-67"
-                className={`input w-full font-body${fieldState.error ? " input-error" : ""}`}
+                className={`input font-mono w-full${fieldState.error ? " input-error" : ""}`}
                 value={field.value ?? ""}
                 onChange={(event) => field.onChange(event.target.value)}
                 onBlur={(event) => {

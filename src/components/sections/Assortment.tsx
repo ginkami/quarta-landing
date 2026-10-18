@@ -1,4 +1,4 @@
-import { sections } from "@/content/landing";
+import { assortmentLead, sections } from "@/content/landing";
 import { AssortmentCarousel } from "./AssortmentCarousel";
 
 export function Assortment() {
@@ -13,7 +13,7 @@ export function Assortment() {
         </p>
         <h2 className="font-heading mt-3 text-4xl md:text-5xl">Ассортимент</h2>
         <p className="mt-3 max-w-2xl font-body text-base-content/70">
-          Обжариваем партиями по 5 кг — в пачке всегда свежий кофе.
+          {assortmentLead}
         </p>
 
         <AssortmentCarousel />

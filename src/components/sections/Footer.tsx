@@ -81,7 +81,7 @@ export function Footer() {
             <PhoneIcon aria-hidden="true" className="size-5 shrink-0 text-base-100" />
             <a
               href={`tel:${contacts.phoneHref}`}
-              className="link-hover link font-price"
+              className="link-hover link font-mono"
             >
               {contacts.phone}
             </a>
@@ -98,7 +98,7 @@ export function Footer() {
           </li>
           <li className="flex items-center gap-3">
             <ClockIcon aria-hidden="true" className="size-5 shrink-0 text-base-100" />
-            <span>{contacts.hours.map((row) => `${row.days} ${row.time}`).join(" · ")}</span>
+            <span className="font-mono">{contacts.hours.map((row) => `${row.days} ${row.time}`).join(" · ")}</span>
           </li>
           <li className="flex items-center gap-1 pt-1 ml-[-0.3rem]">
             <a

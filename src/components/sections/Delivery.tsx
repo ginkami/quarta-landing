@@ -36,7 +36,7 @@ export function Delivery() {
               {contacts.hours.map((row) => (
                 <div key={row.days} className="flex justify-between gap-4">
                   <dt>{row.days}</dt>
-                  <dd className="font-price">{row.time}</dd>
+                  <dd className="font-mono">{row.time}</dd>
                 </div>
               ))}
             </dl>

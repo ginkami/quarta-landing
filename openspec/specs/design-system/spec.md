@@ -17,18 +17,18 @@ The page SHALL use this palette as its single source of truth: background `#FAF6
 - **THEN** the primary action uses `#4A5D4E` and the promotional badge uses `#D08A4B`
 
 ### Requirement: Typography roles
-The design SHALL assign typography roles as follows: headings — Yanone Kaffeesatz; body text — PT Serif; captions and product characteristics — PT Sans; prices — PT Mono. Roles SHALL be applied consistently across all sections.
+The design SHALL assign typography roles as follows: headings — Yanone Kaffeesatz; body text — PT Serif; captions and product characteristics — PT Sans; prices — PT Serif. Roles SHALL be applied consistently across all sections.
 
 #### Scenario: Prices
 - **WHEN** any price is displayed (product cards, subscription)
-- **THEN** it is rendered in PT Mono
+- **THEN** it is rendered in PT Serif
 
 #### Scenario: Headings and captions
 - **WHEN** a section heading or a small caption/characteristic label renders
 - **THEN** the heading uses Yanone Kaffeesatz and the caption uses PT Sans, while body copy uses PT Serif
 
 ### Requirement: Self-hosted font delivery
-The four brand fonts SHALL be delivered as local font files from the project's own origin; the page SHALL NOT request fonts from external providers at runtime.
+The brand fonts SHALL be delivered as local font files from the project's own origin; the page SHALL NOT request fonts from external providers at runtime.
 
 #### Scenario: External network independence
 - **WHEN** the page loads while external font CDNs are unreachable

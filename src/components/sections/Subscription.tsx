@@ -29,7 +29,7 @@ export function Subscription() {
             </li>
           </ul>
 
-          <p className="mt-6 font-price text-4xl font-semibold text-primary">
+          <p className="mt-6 font-price text-4xl font-semibold text-[color-mix(in_oklch,var(--color-secondary)_70%,black)]">
             {renderBynText(subscription.priceLabel)}
           </p>
 
