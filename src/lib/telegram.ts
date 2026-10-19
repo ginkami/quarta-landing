@@ -1,5 +1,5 @@
 import { getServerEnv } from "@/lib/env";
-import { INTEREST_OPTIONS } from "@/lib/schemas/lead";
+import { interestLabel } from "@/lib/schemas/lead";
 
 /** Data needed to render the group notification. */
 export interface LeadNotificationData {
@@ -25,10 +25,6 @@ function escapeHtml(value: string): string {
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
-}
-
-function interestLabel(value: string): string {
-  return INTEREST_OPTIONS.find((option) => option.value === value)?.label ?? value;
 }
 
 /** Renders the approved Telegram HTML message for a lead (pure, escaping all user text). */

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatPhoneInput, leadSchema, normalizePhone } from "./lead";
+import { formatPhoneInput, interestLabel, leadSchema, normalizePhone } from "./lead";
 
 describe("phone acceptance rules", () => {
   it("normalizes a formatted Belarusian number to E.164", () => {
@@ -118,5 +118,17 @@ describe("formatPhoneInput (format on blur only)", () => {
     expect(formatPhoneInput("12345")).toBe("12345");
     expect(formatPhoneInput("+79991234567")).toBe("+79991234567");
     expect(formatPhoneInput("+37529123456")).toBe("+37529123456");
+  });
+});
+
+describe("interestLabel", () => {
+  it("maps known interest values to Russian labels", () => {
+    expect(interestLabel("subscription")).toBe("Подписка");
+    expect(interestLabel("single_order")).toBe("Разовый заказ");
+    expect(interestLabel("question")).toBe("Вопрос");
+  });
+
+  it("passes unknown values through unchanged", () => {
+    expect(interestLabel("wholesale")).toBe("wholesale");
   });
 });

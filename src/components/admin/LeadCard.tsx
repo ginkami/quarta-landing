@@ -4,6 +4,7 @@ import { useState } from "react";
 import { SquarePenIcon } from "lucide-react";
 import { deleteLead, saveComment, setLeadProcessed } from "@/actions/admin";
 import type { AdminLead } from "@/lib/leads-admin";
+import { interestLabel } from "@/lib/schemas/lead";
 import { AttributionSummary } from "./AttributionSummary";
 import { CommentModal } from "./CommentModal";
 
@@ -71,7 +72,7 @@ export function LeadCard({ lead, onChanged }: LeadCardProps) {
           >
             {lead.phone}
           </a>
-          <p className="mt-1 text-sm text-base-content/80">{lead.interest}</p>
+          <p className="mt-1 text-sm text-base-content/80">{interestLabel(lead.interest)}</p>
         </div>
 
         <label className="flex cursor-pointer items-center gap-2">

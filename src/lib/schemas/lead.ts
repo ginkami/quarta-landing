@@ -10,6 +10,11 @@ export const INTEREST_OPTIONS: ReadonlyArray<{ value: Interest; label: string }>
   { value: "question", label: "Вопрос" },
 ];
 
+/** Russian display label for an interest value; raw value as fallback. */
+export function interestLabel(value: string): string {
+  return INTEREST_OPTIONS.find((option) => option.value === value)?.label ?? value;
+}
+
 const PHONE_FORMAT_MESSAGE =
   "Номер должен начинаться с +375 и содержать 12 цифр: +375 (29) 123-45-67";
 

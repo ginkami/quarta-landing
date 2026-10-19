@@ -19,7 +19,7 @@ const lead: AdminLead = {
   createdAt: "2026-10-18T10:00:00.000Z",
   name: "Аня",
   phone: "+375291234567",
-  interest: "Подписка",
+  interest: "subscription",
   comment: "Позвонить после обжарки",
   processed: false,
   attribution: {
@@ -41,6 +41,7 @@ describe("LeadCard", () => {
     expect(screen.getByRole("heading", { name: "Аня" })).toBeInTheDocument();
     const phone = screen.getByRole("link", { name: "+375291234567" });
     expect(phone).toHaveAttribute("href", "tel:+375291234567");
+    expect(screen.getByText("Подписка")).toBeInTheDocument();
     expect(screen.getByText("Позвонить после обжарки")).toBeInTheDocument();
     expect(screen.getByText("нет данных")).toBeInTheDocument();
   });
