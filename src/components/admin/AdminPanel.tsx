@@ -107,7 +107,10 @@ export function AdminPanel() {
       ) : null}
 
       {loading && leads.length === 0 ? (
-        <p className="mt-6 text-sm text-base-content/60">Загружаю заявки…</p>
+        <div role="status" className="mt-6 flex justify-center">
+          <span className="loading loading-spinner loading-lg" />
+          <span className="sr-only">Загружаю заявки…</span>
+        </div>
       ) : leads.length === 0 ? (
         <p className="mt-6 text-sm text-base-content/60">Заявок пока нет.</p>
       ) : (

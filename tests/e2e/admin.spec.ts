@@ -55,8 +55,14 @@ test("admin logs in with the password and sees the freshly submitted lead", asyn
 
   await submitLead(page, "Тест Плейрайт", "+375290000000");
 
-  // Unauthenticated visit bounces to the login page.
-  await page.goto("/admin");
+  // An unauthenticated visit is answered with a server-side redirect: the
+  // /admin request itself must bounce, not render the panel and swap routes
+  // on the client afterwards.
+  const response = await page.goto("/admin");
+  const firstHop = response?.request().redirectedFrom();
+  expect(firstHop, "server must redirect /admin").not.toBeNull();
+  const hopResponse = await firstHop?.response();
+  expect([302, 303, 307]).toContain(hopResponse?.status());
   await expect(page).toHaveURL(/\/admin\/login$/);
 
   // A wrong password shows a Russian error and stays on the login page.
@@ -71,6 +77,10 @@ test("admin logs in with the password and sees the freshly submitted lead", asyn
   await expect(
     page.getByRole("heading", { name: "Тест Плейрайт" }).first(),
   ).toBeVisible({ timeout: 15_000 });
+
+  // An authenticated visit to the login page bounces straight to the panel.
+  await page.goto("/admin/login");
+  await expect(page).toHaveURL(/\/admin$/);
 });
 
 test("admin toggles status, filters, edits the comment and deletes with confirmation", async ({

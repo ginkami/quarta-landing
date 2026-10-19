@@ -1,6 +1,6 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { adminLogout, loadLeads } from "@/actions/admin";
+import { adminLogout, loadLeads, type LoadLeadsResult } from "@/actions/admin";
 import type { AdminLead } from "@/lib/leads-admin";
 import { AdminPanel } from "./AdminPanel";
 
@@ -90,5 +90,23 @@ describe("AdminPanel", () => {
     render(<AdminPanel />);
 
     expect(await screen.findByRole("alert")).toHaveTextContent("Не удалось загрузить заявки");
+  });
+
+  it("shows a spinner while the first load is pending", async () => {
+    let resolveLeads: (value: LoadLeadsResult) => void = () => undefined;
+    vi.mocked(loadLeads).mockImplementation(
+      () =>
+        new Promise<LoadLeadsResult>((resolve) => {
+          resolveLeads = resolve;
+        }),
+    );
+    render(<AdminPanel />);
+    expect(screen.getByRole("status")).toBeInTheDocument();
+
+    await act(async () => {
+      resolveLeads({ status: "ok", leads: [lead] });
+    });
+    expect(await screen.findByRole("heading", { name: "Аня" })).toBeInTheDocument();
+    expect(screen.queryByRole("status")).not.toBeInTheDocument();
   });
 });
